@@ -21,7 +21,7 @@
     </fileSets>
     <files>
         <file>
-            <source>../../server/session/target/registry-server-session-executable.jar</source>
+            <source>../../server/session/target/registry-server-session-${project.version}-executable.jar</source>
             <outputDirectory>/</outputDirectory>
             <destName>registry-session.jar</destName>
         </file>

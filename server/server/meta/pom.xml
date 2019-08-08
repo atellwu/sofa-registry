@@ -97,7 +97,6 @@
     </dependencies>
 
     <build>
-        <finalName>registry-server-meta</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

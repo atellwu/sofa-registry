@@ -21,7 +21,7 @@
     </fileSets>
     <files>
         <file>
-            <source>../../server/meta/target/registry-server-meta-executable.jar</source>
+            <source>../../server/meta/target/registry-server-meta-${project.version}-executable.jar</source>
             <outputDirectory>/</outputDirectory>
             <destName>registry-meta.jar</destName>
         </file>

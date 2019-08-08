@@ -86,7 +86,6 @@
     </dependencies>
 
     <build>
-        <finalName>registry-server-data</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

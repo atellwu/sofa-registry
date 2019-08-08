@@ -77,7 +77,6 @@
     </dependencies>
 
     <build>
-        <finalName>registry-server-session</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

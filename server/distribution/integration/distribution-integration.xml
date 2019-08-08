@@ -21,7 +21,7 @@
     </fileSets>
     <files>
         <file>
-            <source>../../server/integration/target/registry-server-integration-executable.jar</source>
+            <source>../../server/integration/target/registry-server-integration-${project.version}-executable.jar</source>
             <outputDirectory>/</outputDirectory>
             <destName>registry-integration.jar</destName>
         </file>
