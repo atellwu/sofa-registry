@@ -16,6 +16,14 @@
  */
 package com.alipay.sofa.registry.server.data.change.event;
 
+import java.util.Map;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.DelayQueue;
+import java.util.concurrent.Executor;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.locks.ReentrantLock;
+
 import com.alipay.sofa.registry.common.model.dataserver.Datum;
 import com.alipay.sofa.registry.common.model.store.Publisher;
 import com.alipay.sofa.registry.log.Logger;
@@ -30,14 +38,6 @@ import com.alipay.sofa.registry.server.data.executor.ExecutorFactory;
 import com.alipay.sofa.registry.server.data.node.DataServerNode;
 import com.alipay.sofa.registry.server.data.remoting.dataserver.DataServerNodeFactory;
 import com.google.common.collect.Interners;
-
-import java.util.Map;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.DelayQueue;
-import java.util.concurrent.Executor;
-import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * a queue of DataChangeEvent
@@ -100,7 +100,12 @@ public class DataChangeEventQueue {
      * @param event
      */
     public void onChange(IDataChangeEvent event) {
-        eventQueue.add(event);
+        try {
+            eventQueue.add(event);
+        } catch (Throwable e) {
+            LOGGER.error("Error onChange: " + e.getMessage(), e);
+            throw e;
+        }
     }
 
     /**
